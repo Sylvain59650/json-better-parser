@@ -1,27 +1,38 @@
 {
-  "name": "positionizer",
+  "name": "json-better-parser",
   "version": "0.6.0",
   "description": "JSON parser",
-  "main": "distrib/positionizer.min.js",
+  "main": "distrib/json-better-parser.min.js",
   "directories": {},
   "scripts": {
-    "test": "exit 0"
+    "test": "ava ./tests/*.ava.js --verbose || exit 0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Sylvain59650/positionizer.git"
+    "url": "git+https://github.com/Sylvain59650/json-better-parser.git"
   },
   "keywords": [
     "JSON",
     "parse",
-    "stringify","correct"
+    "stringify",
+    "correct"
   ],
   "author": "Sylvain Longepée",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Sylvain59650/positionizer/issues"
+    "url": "https://github.com/Sylvain59650/json-better-parser/issues"
+  },
+  "ava": {
+    "files": [
+      "./tests/**/*.ava.js"
+    ],
+    "sources": [
+      "./sources/*.{js,jsx}",
+      "!dist/**/*"
+    ]
   },
   "devDependencies": {
+    "ava": "^1.0.0-beta.3",
     "babel-core": "^6.26.3",
     "babel-plugin-remove-comments": "^2.0.0",
     "babel-preset-env": "^1.7.0",
@@ -32,8 +43,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-watch": "^5.0.0"
   },
-  "homepage": "https://sylvain59650.github.io/positionizer/",
+  "homepage": "https://sylvain59650.github.io/json-better-parser/",
   "dependencies": {
-    "htmlelement-extension": "^0.8.8"
   }
 }

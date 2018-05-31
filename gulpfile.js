@@ -5,15 +5,15 @@ const watch = require("gulp-watch");
 
 
 const chemins = {
-  demo: "./docs/demo/modules/positionizer/distrib/",
+  demo: "./docs/demo/modules/json-better-parser/distrib/",
   demoSrc: "./docs/demo"
 };
 
-gulp.task("positionizer.min.js", () => {
+gulp.task("json-better-parser.min.js", () => {
   return gulp.src([
-      "sources/positionizer.js"
+      "sources/json-better-parser.js"
     ])
-    .pipe(concat("positionizer.min.js"))
+    .pipe(concat("json-better-parser.min.js"))
     .pipe(babel({
       presets: ["es2017"],
       compact: true
@@ -21,11 +21,11 @@ gulp.task("positionizer.min.js", () => {
     .pipe(gulp.dest("distrib"))
 });
 
-gulp.task("positionizer-es2015.min.js", () => {
+gulp.task("json-better-parser-es2015.min.js", () => {
   return gulp.src([
-      "sources/positionizer.js"
+      "sources/json-better-parser.js"
     ])
-    .pipe(concat("positionizer-es2015.min.js"))
+    .pipe(concat("json-better-parser-es2015.min.js"))
     .pipe(babel({
       presets: ["es2015"],
       compact: true
@@ -33,9 +33,9 @@ gulp.task("positionizer-es2015.min.js", () => {
     .pipe(gulp.dest("distrib"))
 });
 
-gulp.task("watch:positionizer.min.js", function() {
-  watch("./sources/positionizer.js", function() {
-    gulp.run("positionizer.min.js");
+gulp.task("watch:json-better-parser.min.js", function() {
+  watch("./sources/json-better-parser.js", function() {
+    gulp.run("json-better-parser.min.js");
   });
 });
 
@@ -46,11 +46,11 @@ gulp.task("vendor", () => {
     .pipe(gulp.dest(chemins.demoSrc))
 })
 
-gulp.task("demo", ["positionizer.min.js"], () => {
+gulp.task("demo", ["json-better-parser.min.js"], () => {
   return gulp.src([
-      "sources/positionizer.js"
+      "sources/json-better-parser.js"
     ])
-    .pipe(concat("positionizer.min.js"))
+    .pipe(concat("json-better-parser.min.js"))
     .pipe(babel({
       presets: ["es2015"],
       compact: false
@@ -59,14 +59,14 @@ gulp.task("demo", ["positionizer.min.js"], () => {
 });
 
 
-gulp.task("default", ["positionizer.min.js", "demo"]);
+gulp.task("default", ["json-better-parser.min.js", "demo"]);
 
-gulp.task("tests", ["positionizer.min.js"]);
+gulp.task("tests", ["json-better-parser.min.js"]);
 
-gulp.task("release", ["positionizer.min.js", "positionizer-es2015.min.js", "demo", "vendor"]);
+gulp.task("release", ["json-better-parser.min.js", "json-better-parser-es2015.min.js", "demo", "vendor"]);
 
 
 
 gulp.task("all", ["default"]);
 
-gulp.task("watch", ["watch:positionizer.min.js"]);
+gulp.task("watch", ["watch:json-better-parser.min.js"]);

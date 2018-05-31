@@ -1,0 +1,36 @@
+#container {
+  width: 100%;
+}
+
+#left,
+#right {
+  width: 49%;
+  border: solid 1px gray;
+  margin: 1px;
+  padding: 10px;
+  display: table-cell;
+}
+
+h1 {
+  font-size: 12pt;
+}
+
+div.breadcrumb {
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  display: block;
+}
+
+a.breadcrumb {
+  color: black;
+  font-size: 12pt;
+  font-weight: 800;
+}
+
+h1.breadcrumb {
+  color: blue;
+  font-size: 12pt;
+  font-weight: 900;
+  display: inline;
+}

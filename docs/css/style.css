@@ -1,0 +1,152 @@
+nav {
+  margin-left: 10px;
+}
+
+nav>li {
+  list-style-type: square;
+  background-color: rgb(16, 16, 214);
+  color: white;
+  font-weight: 600;
+  width: 70%;
+  padding: 5px;
+  font-size: 12pt;
+  margin-bottom: 5px;
+  border-radius: 0px 0px 20px 0px;
+  opacity: 0.5;
+}
+
+nav>li>a {
+  color: rgb(226, 221, 221);
+  text-decoration: none;
+}
+
+nav>li:hover {
+  background-color: rgb(81, 81, 241);
+  color: white;
+  font-weight: bolder;
+  opacity: 1
+}
+
+nav>li>a:hover {
+  color: white;
+}
+
+nav.submenu>li,
+nav.submenu>li:hover {
+  list-style-type: square;
+  background-color: darkblue;
+  border-radius: unset;
+  font-size: 10pt;
+}
+
+h1 {
+  font-size: 13pt;
+  color: gray;
+}
+
+h2 {
+  font-size: 12pt;
+  color: dodgerblue;
+}
+
+h3 {
+  font-size: 11pt;
+  color: darksalmon;
+}
+
+code {
+  white-space: pre-line;
+  background-color: rgb(241, 241, 241);
+  padding: 3px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 30px;
+  margin-right: 30px;
+  display: block;
+  font-size: 10pt;
+  border-radius: 5px;
+  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Monaco", "Courier New", Courier, monospace;
+}
+
+table {
+  border: solid 1px gray;
+}
+
+a {
+  color: darkslateblue;
+}
+
+.signature,
+.arg,
+.return,
+.example {
+  font-weight: bolder;
+  background-color: dodgerblue;
+  color: black;
+  display: inline;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 5px;
+  font-size: 10pt;
+  margin-right: 20px;
+}
+
+.signature:before,
+.arg:before,
+.return:before,
+.example:before {
+  clear: left;
+  content: '\A';
+}
+
+.arg {
+  background-color: darksalmon;
+}
+
+.arg:before {
+  content: "Arguments"
+}
+
+.return:before {
+  content: "Returns";
+}
+
+.signature:before {
+  content: "Signature";
+}
+
+p.code:after {
+  content: "\A";
+}
+
+.example {
+  background-color: aquamarine;
+}
+
+.example:before {
+  clear: left;
+  content: "Example";
+}
+
+p.code {
+  display: inline-block;
+  background-color: bisque;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+legend {
+  background-color: rgb(193, 245, 97);
+  border-radius: 10px 0px 10px 0px;
+  color: black;
+  font-size: 10pt;
+  padding: 10px;
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}

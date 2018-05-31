@@ -1,0 +1,39 @@
+{
+  "name": "positionizer",
+  "version": "0.6.0",
+  "description": "JSON parser",
+  "main": "distrib/positionizer.min.js",
+  "directories": {},
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sylvain59650/positionizer.git"
+  },
+  "keywords": [
+    "JSON",
+    "parse",
+    "stringify","correct"
+  ],
+  "author": "Sylvain Longepée",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Sylvain59650/positionizer/issues"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-remove-comments": "^2.0.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "7.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-watch": "^5.0.0"
+  },
+  "homepage": "https://sylvain59650.github.io/positionizer/",
+  "dependencies": {
+    "htmlelement-extension": "^0.8.8"
+  }
+}

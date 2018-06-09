@@ -1,0 +1,130 @@
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="../3parts/iziToast.min.css?v=130c">
+  <script src="../3parts/iziToast.min.js?v=130c" type="text/javascript"></script>
+  <link rel="stylesheet" type="text/css" href="../css/demo.css" />
+  <script src="https://cdn.jsdelivr.net/npm/htmlelement-extension@0.8.8/distrib/htmlElement.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/htmlelement-events-extension@0.9.8/distrib/htmlElement-events.min.js"></script>
+</head>
+
+<body>
+
+  <div class="breadcrumb">
+    <a href="https://www.npmjs.com/package/json-better-parser" title="NPM">
+      <img src="https://sylvain59650.github.io/json-better-parser/img/npm.png" height="32"></a>
+    <a href="https://github.com/Sylvain59650/json-better-parser" title="GitHub"><img src="https://github.com/favicon.ico" height="32" /></a>
+  </div>
+  <h1>json-better-parser</h1>
+
+  <script src="modules/json-better-parser/distrib/json-better-parser.min.js"></script>
+  <style>
+    textarea {
+      width: 95%;
+      margin: 10px;
+      height: 150px;
+    }
+    
+    #err {
+      height: 120px;
+      border: solid 2px red;
+      color: red;
+    }
+  </style>
+
+  <textarea id="source" placeholder="Write json string">{a:1}</textarea>
+
+  <div>
+    <button type="button" id="native">With JSon Native</button>
+
+    <button type="button" id="jsonEx">With JSONEx</button>
+
+
+    <button type="button" id="toggle">JSonEx <=> JSON</button>
+    <span id="statusJSON"></span>
+  </div>
+
+  <textarea id="target" readonly="readonly"></textarea>
+
+
+  <textarea id="err" readonly="readonly"></textarea>
+
+  <script>
+    function error(msg) {
+      iziToast.error({
+        title: "Error",
+        message: msg,
+        timeout: 3500,
+        backgrouncColor: "red"
+      });
+    }
+
+    function success(msg) {
+      iziToast.success({
+        title: "",
+        message: msg,
+        timeout: 3500,
+        backgrouncColor: "green"
+      });
+    }
+
+    function isNative() {
+      if (JSON.replaceNativeJson) {
+        statusJSON.html("JSONEx replace JSON");
+      } else {
+        statusJSON.html("JSONEx != JSON");
+      }
+    }
+
+    var source = null;
+    var target = null;
+    var statusJSON = null;
+    var err = null;
+
+
+    document.ready(function() {
+      source = qsi("source");
+      target = qsi("target");
+      statusJSON = qsi("statusJSON");
+      err = qsi("err");
+      isNative();
+
+      qsi("native").on("click", function() {
+        try {
+          err.value = "";
+          target.value = "";
+          var obj = JSON.parse(source.value);
+          var result = JSON.stringify(obj);
+          target.value = result;
+        } catch (e) {
+          err.value = e.message;
+        }
+      });
+    });
+
+    qsi("jsonEx").on("click", function() {
+
+      try {
+        err.value = "";
+        target.value = "";
+        var obj = JSONEx.parse(source.value);
+        var result = JSONEx.stringify(obj);
+        target.value = result;
+      } catch (e) {
+        err.value = e.message;
+      }
+    });
+
+
+    qsi("toggle").on("click", function() {
+      if (JSON === JSONEx) {
+        JSONEx.revertToNativeJson();
+      } else {
+        JSONEx.replaceNativeJson();
+      }
+      isNative();
+    });
+  </script>
+</body>
+
+</html>

@@ -34,7 +34,10 @@
   "devDependencies": {
     "ava": "^1.0.0-beta.3",
     "babel-core": "^6.26.3",
+    "babel-plugin-minify-mangle-names": "^0.4.3",
     "babel-plugin-remove-comments": "^2.0.0",
+    "babel-plugin-rename-umd-globals": "^1.0.0",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2017": "^6.24.1",
@@ -44,6 +47,5 @@
     "gulp-watch": "^5.0.0"
   },
   "homepage": "https://sylvain59650.github.io/json-better-parser/",
-  "dependencies": {
-  }
+  "dependencies": {}
 }

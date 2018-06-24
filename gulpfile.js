@@ -6,8 +6,22 @@ const watch = require("gulp-watch");
 
 const chemins = {
   demo: "./docs/demo/modules/json-better-parser/distrib/",
-  demoSrc: "./docs/demo"
+  demoSrc: "./docs/demo/"
 };
+
+gulp.task("json-better-parser-es2017.min.js", () => {
+  return gulp.src([
+      "sources/json-better-parser.js"
+    ])
+    .pipe(concat("json-better-parser-es2017.min.js"))
+    .pipe(babel({
+      presets: ["es2017"],
+      compact: true,
+      minified: true,
+      plugins: ["minify-mangle-names"]
+    }))
+    .pipe(gulp.dest("distrib"))
+});
 
 gulp.task("json-better-parser.min.js", () => {
   return gulp.src([
@@ -15,20 +29,10 @@ gulp.task("json-better-parser.min.js", () => {
     ])
     .pipe(concat("json-better-parser.min.js"))
     .pipe(babel({
-      presets: ["es2017"],
-      compact: true
-    }))
-    .pipe(gulp.dest("distrib"))
-});
-
-gulp.task("json-better-parser-es2015.min.js", () => {
-  return gulp.src([
-      "sources/json-better-parser.js"
-    ])
-    .pipe(concat("json-better-parser-es2015.min.js"))
-    .pipe(babel({
       presets: ["es2015"],
-      compact: true
+      compact: true,
+      minified: true,
+      plugins: ["minify-mangle-names"]
     }))
     .pipe(gulp.dest("distrib"))
 });
@@ -63,7 +67,7 @@ gulp.task("default", ["json-better-parser.min.js", "demo"]);
 
 gulp.task("tests", ["json-better-parser.min.js"]);
 
-gulp.task("release", ["json-better-parser.min.js", "json-better-parser-es2015.min.js", "demo", "vendor"]);
+gulp.task("release", ["json-better-parser-es2017.min.js", "json-better-parser.min.js", "demo", "vendor"]);
 
 
 

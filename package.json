@@ -1,6 +1,6 @@
 {
   "name": "json-better-parser",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "JSON parser",
   "main": "distrib/json-better-parser.min.js",
   "directories": {},

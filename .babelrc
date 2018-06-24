@@ -1,5 +1,5 @@
 {
   "plugins": ["transform-es2015-modules-umd", ["rename-umd-globals", {
     "jsonBetterParserMin": "JSONEx"
-  }], "minify-mangle-names"]
+  }]]
 }

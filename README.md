@@ -10,6 +10,9 @@ Better JSON parser than native method
     <img src="https://img.shields.io/bundlephobia/min/json-better-parser.svg" />
     <img src="https://img.shields.io/badge/eslint-ok-blue.svg" />
     <a target="_blank" title="tests" href="https://sylvain59650.github.io/json-better-parser/"><img src="https://img.shields.io/badge/tests-passing-brightgreen.svg" /></a>
+      <a target="_blank" title="downloads" href="https://www.jsdelivr.com/package/npm/json-better-parser"><img src="https://data.jsdelivr.com/v1/package/npm/json-better-parser/badge" /></a>
+    <a target="_blank" title="cdn" href="https://cdn.jsdelivr.net/npm/json-better-parser/distrib/json-better-parser.min.js"><img src="https://img.shields.io/badge/cdn-jsdeliv-black.svg" /></a>
+ 
     <img src="https://img.shields.io/npm/l/json-better-parser.svg" />
     <img src="https://hits.dwyl.com/Sylvain59650/json-better-parser.svg" />
   </div>

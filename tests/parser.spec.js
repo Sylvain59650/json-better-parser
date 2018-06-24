@@ -1,4 +1,4 @@
-var JSONEx = require("../sources/json-better-parser.js");
+var JSONEx = require("../docs/demo/modules/json-better-parser/distrib/json-better-parser.min.js");
 
 
 function to(exp) {
@@ -53,6 +53,9 @@ console.log(correct('{abc:"once upon a time",bcd:    "game of thrones"}'));
 //t.deepEqual(correct('{a:"1,b:2,c:"3}'), '{"a":"1","b":2,"c":"3"}');
 
 //t.deepEqual(correct('{abc:"1",bcd:25,cde:3}'), '{"abc":"1","bcd":25,"cde":3}');
+debugger;
+console.log(correct('{a:1,"b":true,c:null,d:[{r:5,tt:"ee"}]}'));
+
 debugger;
 console.log(correct('            {   abc   :   "1"    ,     bcd   :    \'25\'    ,   cde   :    3   }'));
 

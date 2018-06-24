@@ -3,7 +3,10 @@
 
 
 class JONExParseError extends Error {
-
+  constructor(msg) {
+    super(msg);
+    this.type = "JONExParseError"
+  }
 }
 
 var text = "";
@@ -407,12 +410,12 @@ function parse(text2) {
       return __nativeJson.parse(correction);
     } catch (ee) {
       var msg = __internal.error(e, text2) + "\n";
-      if (ee instanceof JONExParseError) {
+      if (ee.type === "JONExParseError") {
         msg += ee.message;
       } else {
         msg += __internal.error(ee, correction || "");
       }
-      throw msg;
+      throw new JONExParseError(msg);
     }
   }
 }

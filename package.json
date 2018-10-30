@@ -1,6 +1,6 @@
 {
   "name": "json-better-parser",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "JSON parser",
   "main": "distrib/json-better-parser.min.js",
   "directories": {},
@@ -17,7 +17,13 @@
     "stringify",
     "correct"
   ],
-  "author": "Sylvain Longepée",
+  "author": "sylvain59",
+  "maintainers": [
+    {
+      "name": "sylvain59",
+      "email": "slongepee@laposte.net"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Sylvain59650/json-better-parser/issues"

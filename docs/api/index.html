@@ -2,138 +2,313 @@
 
 <head>
   <title>json-better-parser</title>
-  <link href="https://sylvain59650.github.io/demonstrator/css/style.css" type="text/css" rel="stylesheet" />
-  <link href="https://sylvain59650.github.io/demonstrator/css/demo.css" type="text/css" rel="stylesheet" />
+  <link href="https://sylvain59650.github.io/demonstrator/css/theme1.css" type="text/css" rel="stylesheet" />
 </head>
 
 <body>
-  <div class="breadcrumb">
-    <a href="https://www.npmjs.com/package/json-better-parser" title="NPM">
-      <img src="https://sylvain59650.github.io/demonstrator/img/npm.png" height="32"></a>
-    <a href="https://github.com/Sylvain59650/json-better-parser" title="GitHub"><img src="https://github.com/favicon.ico" height="32" /></a>
+  <style>
+    article {
+      margin-top: 50px;
+    }
+    
+    table.compare {
+      border: solid 2px gray;
+      border-collapse: collapse;
+    }
+    
+    table.compare>tbody>tr>th {
+      border: solid 1px gray;
+      padding: 3px;
+    }
+    
+    table.compare>tbody>tr>td {
+      border: solid 1px gray;
+      padding: 3px;
+    }
+    
+    pre {
+      font-family: 'Arial';
+      font-size: 9pt;
+    }
+  </style>
+  <div class="container">
+    <div>
+      <a href="https://www.npmjs.com/package/json-better-parser" title="NPM">
+        <img src="https://sylvain59650.github.io/demonstrator/img/npm.png" height="32"></a>
+      <a href="https://github.com/Sylvain59650/json-better-parser" title="GitHub"><img src="https://github.com/favicon.ico" height="32" /></a>
+    </div>
+
+    <div class="breadcrumb">
+      <a class="breadcrumb" href="../index.html">Home</a> &gt;
+      <h1 class="breadcrumb">API for json-better-parser</h1>
+    </div>
+
+    <div style="display:inline">
+      <a target="_blank" title="build" href="https://travis-ci.org/Sylvain59650/json-better-parser"><img src="https://travis-ci.org/Sylvain59650/json-better-parser.png?branch=master" /></a>
+      <a target="_blank" title="version" href="https://www.npmjs.com/package/json-better-parser"><img src="https://img.shields.io/npm/v/json-better-parser.svg" /></a>
+      <a target="_blank" title="package" href="https://github.com/Sylvain59650/json-better-parser"><img src="https://img.shields.io/github/package-json/v/Sylvain59650/json-better-parser.svg" /></a>
+      <a target="_blank" title="dependencies" href="https://david-dm.org/Sylvain59650/json-better-parser"><img src="https://img.shields.io/david/Sylvain59650/json-better-parser.svg" /></a>
+      <a target="_blank" title="dependencies graph" href="http://npm.anvaka.com/#/view/2d/json-better-parser"><img src="https://img.shields.io/badge/dependencies-graph-blue.svg" /></a>
+      <img src="https://img.shields.io/bundlephobia/min/json-better-parser.svg" />
+      <img src="https://img.shields.io/badge/eslint-ok-blue.svg" />
+      <a target="_blank" title="tests" href="https://sylvain59650.github.io/json-better-parser/"><img src="https://img.shields.io/badge/tests-passing-brightgreen.svg" /></a>
+      <a target="_blank" title="downloads" href="https://www.jsdelivr.com/package/npm/json-better-parser"><img src="https://data.jsdelivr.com/v1/package/npm/json-better-parser/badge" /></a>
+      <a target="_blank" title="cdn" href="https://cdn.jsdelivr.net/npm/json-better-parser/distrib/json-better-parser.min.js"><img src="https://img.shields.io/badge/cdn-jsdeliv-black.svg" /></a>
+      <img src="https://img.shields.io/npm/l/json-better-parser.svg" />
+      <img src="https://hits.dwyl.com/Sylvain59650/json-better-parser.svg" />
+    </div>
+
+
+    <article>
+      <h1>Introduction</h1>
+      <p>
+        The native function to switch from json is much too limited. It fails if the input text differs slightly from the strict JSON format and the error message is not at all explicit.
+      </p>
+      <p>JSONEx attempts to remedy this situation by correcting the input text.</p>
+      JSONEx
+      <ul>
+        <li>add quotation marks around the keys if they do not have one.</li>
+        <li>replace single quotes around keys or values ​​with quotation marks</li>
+        <li>remove the commas at the end of the list of properties</li>
+        <li>Adds the missing right quotation mark to keys that have a left quotation mark</li>
+      </ul>
+
+      <p>
+        Error handling is improved. Instead of indicating a character position in the input string more or less at the parser's misunderstanding, JSONEx indicates the type of expected word, an extract from the input string where it is located. error.
+      </p>
+      How it works
+
+      <p>At first, JSONEx uses the native function of the JSON API. If it fails, the input string is corrected and JSONEx retries the call to the native function a second time. If the parsing fails you get the improved message from the first parsing attempt
+        and the improved message from the 2nd attempt.
+      </p>
+    </article>
+
+
+    <article id="compare">
+      <table class="compare">
+        <colgroup>
+          <col span="1" style="background-color:#ffffcc">
+          <col span="2" style="background-color:#aaaaaa">
+          <col span="3" style="background-color:#33FF41">
+        </colgroup>
+        <tr>
+          <th>Input</th>
+          <th colspan="2">JSON Native</th>
+          <th colspan="3">JSONEx</th>
+        </tr>
+        <tr>
+          <td></td>
+          <th>status</th>
+          <th>message</th>
+          <th>status</th>
+          <th>message</th>
+          <th>undestand</th>
+        </tr>
+        <tr>
+          <td>
+            {a:1}
+          </td>
+          <td>
+            error
+          </td>
+          <td><pre>Unexpected token a in JSON at position 1</pre></td>
+          <td>
+            ok
+          </td>
+          <td></td>
+          <td>{"a":1}</td>
+        </tr>
+
+        <tr>
+          <td>
+            {"a":1,}
+          </td>
+          <td>
+            error
+          </td>
+          <td><pre>Unexpected token } in JSON at position 7</pre></td>
+          <td>
+            ok
+          </td>
+          <td></td>
+          <td>{"a":1}</td>
+        </tr>
+
+        <tr>
+          <td>
+            {'a':1}
+          </td>
+          <td>
+            error
+          </td>
+          <td><pre>Unexpected token ' in JSON at position 1</pre></td>
+          <td>
+            ok
+          </td>
+          <td></td>
+          <td>{"a":1}</td>
+        </tr>
+
+        <tr>
+          <td>
+            {"a":[1,2,3,]}
+          </td>
+          <td>
+            error
+          </td>
+          <td><pre>Unexpected token ] in JSON at position 12</pre></td>
+          <td>
+            ok
+          </td>
+          <td></td>
+          <td> {"a":[1,2,3]}</td>
+        </tr>
+
+        <tr>
+          <td>
+            {"a":[1,2,3,'r']}
+          </td>
+          <td>
+            error
+          </td>
+          <td><pre>Unexpected token ] in JSON at position 12</pre></td>
+          <td>
+            ok
+          </td>
+          <td></td>
+          <td> {"a":[1,2,3,"r"]}</td>
+        </tr>
+
+        <tr>
+          <td>
+            {"a:1}
+          </td>
+          <td>
+            error
+          </td>
+          <td><pre>Unexpected end of JSON input</pre></td>
+          <td>
+            error
+          </td>
+          <td><pre>
+  Unexpected end of JSON input while parsing near 
+  {"a:1}
+  -----^
+  Error: Second chance: parse error at position 6 with state obj_key_str after 
+  {"a:1}
+  --------------------^
+            </pre>
+          </td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td>
+            [ {"a":1},{"b":2,"bb:3}]
+          </td>
+          <td>
+            error
+          </td>
+          <td><pre>Unexpected end of JSON input</pre></td>
+          <td>
+            error
+          </td>
+          <td><pre>
+Unexpected end of JSON input while parsing near 
+"a":1},{"b":2,"bb:3}]
+-----------------------^
+Error: Second chance: parse error at position 24 with state obj_key_str after 
+[ {"a":1},{"b":2,"bb:3}]
+--------------------^
+</pre> </td>
+          <td></td>
+        </tr>
+
+
+      </table>
+
+    </article>
+
+    <nav>
+      <li><a href="#parse">parse</a></li>
+      <li><a href="#stringify">stringify</a></li>
+      <li><a href="#correct">correct</a></li>
+      <li><a href="#replaceNativeJson">replaceNativeJson</a></li>
+      <li><a href="#revertToNativeJson">revertToNativeJson</a></li>
+    </nav>
+
+    <article>
+      <a name="parse"></a>
+      <h2>JSONEx.parse</h2>
+      <div class="signature">
+        <p>JSONEx.parse(<i>text</i>)</p>
+      </div>
+      <div class="arg">
+        <p><i>text</i>string to parse</p>
+      </div>
+      <div class="description">
+        <p>Parse a string as JSON and return the value.</p>
+      </div>
+    </article>
+
+    <article>
+      <a name="stringify"></a>
+      <h2>JSONEx.stringify</h2>
+      <div class="signature">
+        <p>JSONEx.stringify(<i>obj</i>)</p>
+      </div>
+      <div class="arg">
+        <p><i>obj</i>a object</p>
+      </div>
+      <div class="return">
+        <p>string</p>
+      </div>
+      <div class="description">
+        <p>Return a JSON string corresponding to the specified value.</p>
+      </div>
+    </article>
+
+    <article>
+      <a name="correct"></a>
+      <h2>JSONEx.correct</h2>
+      <div class="signature">
+        <p>
+          JSONEx.correct(<i>text</i>);</p>
+      </div>
+      <div class="arg">
+        <p><i>text</i>a json string or similar</p>
+      </div>
+      <div class="description">
+        <p>try to transform the text to be compatible JSON </p>
+      </div>
+
+    </article>
+
+
+    <article>
+      <a name="replaceNativeJson"></a>
+      <h2>JSONEx.replaceNativeJson</h2>
+      <div class="signature">
+        <p>JSONEx.replaceNativeJson();</p>
+      </div>
+      <div class="description">
+        <p>Replace JSON native parser with JSONEx</p>
+      </div>
+
+    </article>
+
+    <article>
+      <a name="revertToNativeJson"></a>
+      <h2>JSONEx.revertToNativeJson</h2>
+      <div class="signature">
+        <p>JSONEx.revertToNativeJson();</p>
+      </div>
+      <div class="description">
+        <p>Restore JSON native parser</p>
+      </div>
+    </article>
+
   </div>
-
-  <div class="breadcrumb">
-    <a class="breadcrumb" href="../index.html">Home</a> &gt;
-    <h1 class="breadcrumb">API for json-better-parser</h1>
-  </div>
-
-  <div style="display:inline">
-    <a target="_blank" title="build" href="https://travis-ci.org/Sylvain59650/json-better-parser"><img src="https://travis-ci.org/Sylvain59650/json-better-parser.png?branch=master" /></a>
-    <a target="_blank" title="version" href="https://www.npmjs.com/package/json-better-parser"><img src="https://img.shields.io/npm/v/json-better-parser.svg" /></a>
-    <a target="_blank" title="package" href="https://github.com/Sylvain59650/json-better-parser"><img src="https://img.shields.io/github/package-json/v/Sylvain59650/json-better-parser.svg" /></a>
-    <a target="_blank" title="dependencies" href="https://david-dm.org/Sylvain59650/json-better-parser"><img src="https://img.shields.io/david/Sylvain59650/json-better-parser.svg" /></a>
-    <a target="_blank" title="dependencies graph" href="http://npm.anvaka.com/#/view/2d/json-better-parser"><img src="https://img.shields.io/badge/dependencies-graph-blue.svg" /></a>
-    <img src="https://img.shields.io/bundlephobia/min/json-better-parser.svg" />
-    <img src="https://img.shields.io/badge/eslint-ok-blue.svg" />
-    <a target="_blank" title="tests" href="https://sylvain59650.github.io/json-better-parser/"><img src="https://img.shields.io/badge/tests-passing-brightgreen.svg" /></a>
-    <a target="_blank" title="downloads" href="https://www.jsdelivr.com/package/npm/json-better-parser"><img src="https://data.jsdelivr.com/v1/package/npm/json-better-parser/badge" /></a>
-    <a target="_blank" title="cdn" href="https://cdn.jsdelivr.net/npm/json-better-parser/distrib/json-better-parser.min.js"><img src="https://img.shields.io/badge/cdn-jsdeliv-black.svg" /></a>
-    <img src="https://img.shields.io/npm/l/json-better-parser.svg" />
-    <img src="https://hits.dwyl.com/Sylvain59650/json-better-parser.svg" />
-  </div>
-
-
-  <article>
-    <h1>Introduction</h1>
-    <p>
-      The native function to switch from json is much too limited. It fails if the input text differs slightly from the strict JSON format and the error message is not at all explicit.
-    </p>
-    <p>JSONEx attempts to remedy this situation by correcting the input text.</p>
-    JSONEx
-    <ul>
-      <li>add quotation marks around the keys if they do not have one.</li>
-      <li>replace single quotes around keys or values ​​with quotation marks</li>
-      <li>remove the commas at the end of the list of properties</li>
-      <li>Adds the missing right quotation mark to keys that have a left quotation mark</li>
-    </ul>
-
-    <p>
-      Error handling is improved. Instead of indicating a character position in the input string more or less at the parser's misunderstanding, JSONEx indicates the type of expected word, an extract from the input string where it is located. error.
-    </p>
-    How it works
-
-    <p>At first, JSONEx uses the native function of the JSON API. If it fails, the input string is corrected and JSONEx retries the call to the native function a second time. If the parsing fails you get the improved message from the first parsing attempt
-      and the improved message from the 2nd attempt.
-    </p>
-  </article>
-
-  <nav>
-    <li><a href="#parse">parse</a></li>
-    <li><a href="#stringify">stringify</a></li>
-    <li><a href="#correct">correct</a></li>
-    <li><a href="#replaceNativeJson">replaceNativeJson</a></li>
-    <li><a href="#revertToNativeJson">revertToNativeJson</a></li>
-
-  </nav>
-
-  <article>
-    <a name="parse"></a>
-    <h2>JSONEx.parse</h2>
-    <p>Parse a string as JSON and return the value.</p>
-    <p class="signature" />
-    <p class="code">JSONEx.parse(text)</p>
-    <p class="arg" />
-    <code>
-     
-    </code>
-  </article>
-
-  <article>
-    <a name="stringify"></a>
-    <h2>JSONEx.stringify</h2>
-    <p>Return a JSON string corresponding to the specified value.</p>
-    <p class="signature" />
-    <p class="code">JSONEx.stringify(obj)</p>
-    <p class="arg" />
-    <code>
-        obj: a object     
-      </code>
-    <p class="return" />
-    <p>string</p>
-  </article>
-
-  <article>
-    <a name="correct"></a>
-    <h2>JSONEx.correct</h2>
-    <p>try to transform the text to be compatible JSON </p>
-    <p class="signature" />
-    <p class="code">JSONEx.correct(text);</p>
-    <p class="arg" />
-    <pre>  
-   
-    </pre>
-
-  </article>
-
-
-  <article>
-    <a name="replaceNativeJson"></a>
-    <h2>JSONEx.replaceNativeJson</h2>
-    <p>Replace JSON native parser with JSONEx</p>
-    <p class="signature" />
-    <p class="code">JSONEx.replaceNativeJson();</p>
-    <p class="arg" />
-    <pre>  
-     
-      </pre>
-
-  </article>
-
-  <article>
-    <a name="revertToNativeJson"></a>
-    <h2>JSONEx.revertToNativeJson</h2>
-    <p>Restore JSON native parser</p>
-    <p class="signature" />
-    <p class="code">JSONEx.revertToNativeJson();</p>
-    <p class="arg" />
-    <pre>  
-       
-        </pre>
-
-  </article>
-
-
 </body>
 
 </html>
